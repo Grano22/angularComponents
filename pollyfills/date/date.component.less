@@ -1,0 +1,123 @@
+//Row in months
+@normal-row-color: #e0d7ce;
+@today-row-color: #baada0;
+@selected-row-color: #ad947b;
+//Change month controls
+@button-next-month: #333;
+
+
+.date-dropdown {
+    position: absolute;
+    left: 0; top: 40px;
+    background: #c9c9c9;
+    box-shadow: 0 0 3px 1px;
+    z-index: 1001;
+
+    h4 {
+        margin: 2px;
+    }
+    .dropdown-section {
+        padding: 2px;
+    }
+}
+.date {
+    position: relative;
+    margin: 4px 10px;
+    display: inline-block;
+
+    input {
+        padding: 1em;
+        background: #c9c9c9;
+        border: 1px solid #b5b5b5;
+        &:focus {
+            border-color: #b0640e;
+            outline: none;
+        }    
+    }
+}
+
+.date-toolbox {
+    /*position: absolute;
+    right: 2px; top: 2px;*/
+    text-align: right;
+    margin: 0; padding: 0;
+    width: 100%;
+    line-height: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    color: #333;
+    span {
+        font-size: 42px;
+        margin: 0; padding: 0;
+        margin-right: 6px;
+        
+        &:hover { cursor: pointer; color: #555; }
+    }
+}
+
+.date-picker {
+    width: 100%;
+    h2 {
+        text-align: center;
+        width: 100%;
+        font-size: 25px;
+        margin: 0;
+        background: #a3a3a3;
+    }
+    .date-picker-header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: #b8b8b8;
+
+        .date-picker-previous, .date-picker-next {
+            width: 32px;
+            font-size: 32px;
+            text-align: center;
+            color: @button-next-month;
+            &:hover {
+                opacity: 0.6;
+                cursor: pointer;
+            }
+        }
+        h3 {
+            text-align: center;
+            margin: 0;
+            flex: auto;
+        }
+    }
+    .date-picker-body {
+        table {
+            td {
+                background-color: @normal-row-color;
+                &:hover { cursor: pointer; background-color: shade(@normal-row-color, 50%);  }
+            }
+            td.selected { background: @selected-row-color; }
+            td.today { background: @today-row-color; }
+        }
+    }
+}
+
+/* Chrome */
+//.date input::-webkit-datetime-edit { padding: 1em; }
+.date input::-webkit-inner-spin-button {
+
+}
+
+//.date input::-webkit-inner-spin-button,
+.date input::-webkit-outer-spin-button,
+.date input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+//RWD
+@media only screen and (max-width:500px) {
+    .date-dropdown {
+        position: fixed;
+        width: 100%;
+        height: 50vh;
+        top: 50%; bottom: 0;
+        overflow-y: auto;
+    }
+}

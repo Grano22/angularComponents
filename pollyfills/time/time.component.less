@@ -1,0 +1,90 @@
+.time-dropdown {
+    position: absolute;
+    left: 0; top: 40px;
+    background: #c9c9c9;
+    box-shadow: 0 0 3px 1px;
+    z-index: 1001;
+
+    h4 {
+        margin: 2px;
+    }
+    .dropdown-section {
+        padding: 2px;
+    }
+}
+.time{
+    position: relative;
+    margin: 4px 10px;
+    display: inline-block;
+
+    input {
+        padding: 1em;
+        background: #c9c9c9;
+        border: 1px solid #b5b5b5;
+        &:focus {
+            border-color: #b0640e;
+            outline: none;
+        }    
+    }
+}
+
+.time-toolbox {
+    /*position: absolute;
+    right: 2px; top: 2px;*/
+    text-align: right;
+    margin: 0; padding: 0;
+    width: 100%;
+    line-height: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    color: #333;
+    span {
+        font-size: 42px;
+        margin: 0; padding: 0;
+        margin-right: 6px;
+        
+        &:hover { cursor: pointer; color: #555; }
+    }
+}
+
+.time-picker {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    label {
+        display: inline-block;
+        width: 40px;
+        margin: 0 30px;
+
+        span { width: 100%; text-align: center; display: block; padding: 4px; background: #333; color: #fff;
+        &:hover { cursor: pointer; background: #fff; color: #333; } }
+    }
+    input[type=number] {
+        -moz-appearance:textfield;
+        width: 100%;
+        margin:0; padding: 7px 4px;
+        text-align: center;
+    }
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        display: none;
+        margin: 0;
+    }
+}
+
+.time input::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    display: none;
+}
+
+//RWD
+@media only screen and (max-width:500px) {
+    .time-dropdown {
+        position: fixed;
+        width: 100%;
+        height: 20vh;
+        bottom: -10%; left: 0;
+        overflow-y: auto;
+    }
+}

@@ -1,0 +1,44 @@
+<div class="datetime-local">
+<input type="datetime-local" (focus)="onFocus()" [value]="value" ngDefaultControl>
+<div class="datetime-local-dropdown" *ngIf="displaySelector">
+    <div class="datetime-local-toolbox"><span title="ta data" (click)="setToday()">&#x022B8;</span><span title="ten czas" (click)="setThisTime()">&#x0232E;</span><span (click)="onSelectorClose($event)">&times;</span></div>
+<div class="dropdown-section">
+    <h4>Wybierz date</h4>
+    <div class="date-picker">
+        <h2>{{ currYear }}</h2>
+        <div class="date-picker-header">
+            <span class="date-picker-previous" (click)="onSelectorMonthUpdate(currYear, currMonth-1)"><i class="fas fa-angle-left"></i></span>
+            <h3>{{ monthName }}</h3>
+            <span class="date-picker-next" (click)="onSelectorMonthUpdate(currYear, currMonth+1)"><i class="fas fa-angle-right"></i></span>
+        </div>
+        <div class="date-picker-body">
+            <table (click)="$event.target.classList.contains('dayEntry') ? onSelectorDay($event) : null">
+                <thead></thead>
+                <tbody >
+                    <tr [id]="i" *ngFor="let week of monthMap; let i = index">
+                        <ng-container *ngFor="let day of week; let j = index">
+                        <td [id]="(i==0 && day>15 ? currMonth-1 : (i==monthMap.length-1 && day<15 ? currMonth+1 : currMonth))+'-'+day" [class]="'dayEntry'+ ((day+'').indexOf('&')==0 ? ' today' : '')">{{ prepareValue(day) }}</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="dropdown-section">
+    <h4>Wybierz czas</h4>
+    <div class="time-picker">
+        <label class="time-picker-hours">
+            <span class="time-picker-up" (click)="onHoursTimeUpdate(currHour+1)"><i class="fas fa-chevron-up"></i></span>
+            <input type="number" [value]="currHour" (blur)="onHoursTimeUpdate($event.currentTarget.value)">
+            <span class="time-picker-down" (click)="onHoursTimeUpdate(currHour-1)"><i class="fas fa-chevron-down"></i></span>
+        </label>
+        <label class="time-picker-minutes">
+            <span class="time-picker-up" (click)="onMinutesTimeUpdate(currMinutes+1)"><i class="fas fa-chevron-up"></i></span>
+            <input type="number" [value]="currMinutes" (blur)="onMinutesTimeUpdate($event.currentTarget.value)">
+            <span class="time-picker-down" (click)="onMinutesTimeUpdate(currMinutes-1)"><i class="fas fa-chevron-down"></i></span>
+        </label>
+    </div>
+</div>
+</div>
+</div>

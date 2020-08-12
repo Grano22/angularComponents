@@ -1,0 +1,29 @@
+<div class="date">
+    <input type="date" (focus)="onFocus()" [value]="value" ngDefaultControl>
+    <div class="date-dropdown" *ngIf="displaySelector">
+        <div class="date-toolbox"><span title="ta data" (click)="setToday()">&#x022B8;</span><span title="ten czas" (click)="setThisTime()">&#x0232E;</span><span (click)="onSelectorClose($event)">&times;</span></div>
+    <div class="dropdown-section">
+        <h4>Wybierz date</h4>
+        <div class="date-picker">
+            <h2>{{ currYear }}</h2>
+            <div class="date-picker-header">
+                <span class="date-picker-previous" (click)="onSelectorMonthUpdate(currYear, currMonth-1)"><i class="fas fa-angle-left"></i></span>
+                <h3>{{ monthName }}</h3>
+                <span class="date-picker-next" (click)="onSelectorMonthUpdate(currYear, currMonth+1)"><i class="fas fa-angle-right"></i></span>
+            </div>
+            <div class="date-picker-body">
+                <table (click)="$event.target.classList.contains('dayEntry') ? onSelectorDay($event) : null">
+                    <thead></thead>
+                    <tbody >
+                        <tr [id]="i" *ngFor="let week of monthMap; let i = index">
+                            <ng-container *ngFor="let day of week; let j = index">
+                            <td [id]="(i==0 && day>15 ? currMonth-1 : (i==monthMap.length-1 && day<15 ? currMonth+1 : currMonth))+'-'+day" [class]="'dayEntry'+ ((day+'').indexOf('&')==0 ? ' today' : '')">{{ prepareValue(day) }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

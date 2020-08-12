@@ -1,0 +1,21 @@
+<div class="time">
+    <input type="time" (focus)="onFocus()" [value]="_value" ngDefaultControl>
+    <div class="time-dropdown" *ngIf="displaySelector">
+        <div class="time-toolbox"><span title="ten czas" (click)="setThisTime()">&#x0232E;</span><span (click)="onSelectorClose($event)">&times;</span></div>
+        <div class="dropdown-section">
+            <div class="time-toolbox"></div>
+            <div class="time-picker">
+                <label class="time-picker-hours">
+                    <span class="time-picker-up" (click)="onHoursTimeUpdate(currHour+1)"><i class="fas fa-chevron-up"></i></span>
+                    <input type="number" [value]="currHour" (blur)="onHoursTimeUpdate($event.currentTarget.value)">
+                    <span class="time-picker-down" (click)="onHoursTimeUpdate(currHour-1)"><i class="fas fa-chevron-down"></i></span>
+                </label>
+                <label class="time-picker-minutes">
+                    <span class="time-picker-up" (click)="onMinutesTimeUpdate(currMinutes+1)"><i class="fas fa-chevron-up"></i></span>
+                    <input type="number" [value]="currMinutes" (blur)="onMinutesTimeUpdate($event.currentTarget.value)">
+                    <span class="time-picker-down" (click)="onMinutesTimeUpdate(currMinutes-1)"><i class="fas fa-chevron-down"></i></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
