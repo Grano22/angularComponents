@@ -113,6 +113,7 @@ export class DateComponent implements OnInit, ControlValueAccessor {
     translateMonth(monthNum: number) {return monthMap[this.controlLanguage][monthNum];}
     get monthName() {return this.translateMonth(this.currMonth);}
 
+    onFocus(): void {this.displaySelector = true;}
     onSelectorClose(evt: Event) { evt.stopPropagation(); let el = evt.target as HTMLElement; el.blur(); this.displaySelector = false; }
 
     onSelectorMonthUpdate(year: number = 0, month: number = 0) {

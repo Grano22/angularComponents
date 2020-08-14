@@ -1,0 +1,2 @@
+<progress [value]="value" [max]="max" *ngIf="getCompatibility(); else nativeProgressBar"></progress>
+<ng-template #nativeProgressBar><div class="native-progress-element"><div class="native-progress-bar"><div class="native-progress-value" [style]="value ? 'width: '+value+'%;' : null"></div></div></div></ng-template>

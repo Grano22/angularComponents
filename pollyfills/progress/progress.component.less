@@ -1,0 +1,91 @@
+//Progress params
+@progress_background_bar: #d1d1d1;
+@progress_active_bar: #cfae4c;
+
+@progress_padding_top: 10px;
+@progress_padding_bottom: 10px;
+@progress_padding_left: 10px;
+@progress_padding_right: 10px;
+
+@height_bar: 20px;
+@width_bar: 250px;
+
+.native-progress-element[value] {
+    position: relative;
+    width: @width_bar;
+    height: @height_bar;
+    .native-progress-bar {
+        background-color: @progress_background_bar;
+
+        height: 100%;
+        width: 100%;
+
+        background-color: #eee;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+
+        padding-left: @progress_padding_left;
+        padding-right: @progress_padding_right;
+        padding-top: @progress_padding_top;
+        padding-bottom: @progress_padding_bottom;
+        box-sizing: border-box;
+
+
+            .native-progress-value {
+                background-color: @progress_active_bar;
+                position: absolute;
+                left: 0; top: 0;
+
+                
+
+                height: @height_bar;
+                width: 0;
+            }
+    }
+}
+
+.native-progress-element:not([value]) {
+
+}
+
+.native-progress-element.aborded {
+    .native-progress-bar {
+        .native-progress-value {
+
+        }
+    }
+}
+
+.native-progress-element.completed {
+    .native-progress-bar {
+        .native-progress-value {
+                
+        }
+    }
+}
+
+progress:not([value]) {
+
+}
+
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+ 
+   width: @width_bar;
+   height: @height_bar;
+}
+
+progress::-webkit-progress-inner-element {
+
+}
+
+progress::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress::-webkit-progress-value {
+    background-color: @progress_active_bar;
+}

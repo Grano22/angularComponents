@@ -1,7 +1,7 @@
 <div class="date">
     <input type="date" (focus)="onFocus()" [value]="value" ngDefaultControl>
     <div class="date-dropdown" *ngIf="displaySelector">
-        <div class="date-toolbox"><span title="ta data" (click)="setToday()">&#x022B8;</span><span title="ten czas" (click)="setThisTime()">&#x0232E;</span><span (click)="onSelectorClose($event)">&times;</span></div>
+        <div class="date-toolbox"><span title="ta data" (click)="setToday()">&#x022B8;</span><span (click)="onSelectorClose($event)">&times;</span></div>
     <div class="dropdown-section">
         <h4>Wybierz date</h4>
         <div class="date-picker">
